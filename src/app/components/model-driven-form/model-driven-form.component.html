@@ -1,41 +1,44 @@
 <div class="container">
   <form novalidate>
     <fieldset>
-      <div class="form-group">
+      <div class="form-group mb-1">
         <label>First Name</label>
         <input type="text"
                class="form-control">
       </div>
 
-      <div class="form-group">
+      <div class="form-group mb-1">
         <label>Last Name</label>
         <input type="text"
                class="form-control">
       </div>
     </fieldset>
 
-    <div class="form-group">
+    <div class="form-group mb-1">
       <label>Email</label>
       <input type="email"
              class="form-control">
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-1">
       <label>Password</label>
       <input type="password"
              class="form-control">
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-1">
       <label>Language</label>
-      <select class="form-control">
+      <select class="form-select">
         <option value="">Please select a language</option>
         <option *ngFor="let lang of langs"
-          [value]="lang">
-            {{lang}}
+          [value]="lang.id">
+            {{lang.name}}
         </option>
       </select>
     </div>
+
+    <button type="submit" class="btn btn-primary mt-2" >Submit</button>
+
   </form>
 
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Language } from './../../models/user.model';
 
-/
+
 
 @Component({
   selector: 'app-model-driven-form',
@@ -11,10 +12,20 @@ export class ModelDrivenFormComponent implements OnInit {
 
 
   // languages
-  langs: string[] = [
-    'English',
-    'French',
-    'German',
+  langs: Language[] = [
+    {
+      id: 1,
+      name: 'English'
+    },
+    {
+      id: 2,
+      name: 'French'
+    },
+    {
+      id: 3,
+      name: 'German'
+    }
+
   ];
 
   constructor() { }
