@@ -1,44 +1,85 @@
 <div class="container">
-  <form novalidate>
-    <fieldset>
-      <div class="form-group mb-1">
-        <label>First Name</label>
-        <input type="text"
-               class="form-control">
-      </div>
 
-      <div class="form-group mb-1">
-        <label>Last Name</label>
-        <input type="text"
-               class="form-control">
-      </div>
-    </fieldset>
+  <div class="row">
+    <div class="col">
 
-    <div class="form-group mb-1">
-      <label>Email</label>
-      <input type="email"
-             class="form-control">
+      <form novalidate>
+        <fieldset>
+          <div class="form-group mb-1">
+            <label>First Name</label>
+            <input type="text"
+                   class="form-control">
+          </div>
+
+          <div class="form-group mb-1">
+            <label>Last Name</label>
+            <input type="text"
+                   class="form-control">
+          </div>
+        </fieldset>
+
+        <div class="form-group mb-1">
+          <label>Email</label>
+          <input type="email"
+                 class="form-control">
+        </div>
+
+        <div class="form-group mb-1">
+          <label>Password</label>
+          <input type="password"
+                 class="form-control">
+        </div>
+
+        <div class="form-group mb-1">
+          <label>Language</label>
+          <select class="form-select">
+            <option value="">Please select a language</option>
+            <option *ngFor="let lang of langs"
+              [value]="lang.id">
+                {{lang.name}}
+            </option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2" >Submit</button>
+
+      </form>
+
     </div>
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>German</td>
 
-    <div class="form-group mb-1">
-      <label>Password</label>
-      <input type="password"
-             class="form-control">
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>English</td>
+          </tr>
+
+        </tbody>
+      </table>
+
     </div>
+  </div>
 
-    <div class="form-group mb-1">
-      <label>Language</label>
-      <select class="form-select">
-        <option value="">Please select a language</option>
-        <option *ngFor="let lang of langs"
-          [value]="lang.id">
-            {{lang.name}}
-        </option>
-      </select>
-    </div>
 
-    <button type="submit" class="btn btn-primary mt-2" >Submit</button>
-
-  </form>
 
 </div>
