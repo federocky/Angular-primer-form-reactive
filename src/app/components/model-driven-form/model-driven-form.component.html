@@ -3,45 +3,96 @@
   <div class="row">
     <div class="col">
 
-      <form novalidate>
-        <fieldset>
+      <form novalidate [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <fieldset formGroupName="name">
+
           <div class="form-group mb-1">
             <label>First Name</label>
             <input type="text"
-                   class="form-control">
+                   class="form-control"
+                   [ngClass]="{ 'is-invalid': firstName.invalid && ( firstName.dirty || firstName.touched),
+                              'is-valid': firstName.valid       && ( firstName.dirty || firstName.touched)}"
+                   formControlName="firstName">
+
+                <div class="invalid-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                  <span *ngIf="firstName.errors.required">First name is required</span>
+                </div>
           </div>
 
           <div class="form-group mb-1">
             <label>Last Name</label>
             <input type="text"
-                   class="form-control">
+                   class="form-control"
+                   [ngClass]="{ 'is-invalid': lastName.invalid && ( lastName.dirty || lastName.touched),
+                              'is-valid': lastName.valid     && ( lastName.dirty || lastName.touched)}"
+                   formControlName="lastName">
+
+                   <div class="invalid-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                    <span *ngIf="lastName.errors.required">Last name is required</span>
+                  </div>
           </div>
         </fieldset>
 
         <div class="form-group mb-1">
           <label>Email</label>
           <input type="email"
-                 class="form-control">
-        </div>
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': email.invalid && ( email.dirty || email.touched),
+                              'is-valid': email.valid     && ( email.dirty || email.touched)}"
+                 formControlName="email"
+                 required>
 
+          <div class="invalid-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+            <span *ngIf="email.errors.required">Email is required</span>
+            <span *ngIf="email.errors.pattern">Email Invalid</span>
+          </div>
+        </div>
+<!-- 
+        <br>
+        <pre>Dirty? {{ myForm.controls.email.dirty }}</pre>
+        <pre>Pristine? {{ myForm.controls.email.pristine }}</pre>
+        <pre>Touched? {{ myForm.controls.email.touched }}</pre>
+        <pre>Valid? {{ myForm.controls.email.valid }}</pre>
+        <pre>Invalid? {{ myForm.controls.email.invalid }}</pre>
+        <pre>Errors? {{ myForm.controls.email.errors | json }}</pre>
+ -->
         <div class="form-group mb-1">
           <label>Password</label>
           <input type="password"
-                 class="form-control">
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': password.invalid && ( password.dirty || password.touched),
+                              'is-valid': password.valid     && ( password.dirty || password.touched)}"
+                 formControlName="password">
+
+                 <div class="invalid-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+                  <span *ngIf="password.errors.required">Password is required</span>
+                  <span *ngIf="password.errors.minlength">Password must be 8 characters long</span>
+                </div>
         </div>
 
         <div class="form-group mb-1">
           <label>Language</label>
-          <select class="form-select">
+          <select class="form-select"
+          formControlName="language"
+          [ngClass]="{ 'is-invalid':  language.invalid     && ( language.dirty || language.touched),
+                        'is-valid':   language.valid       && ( language.dirty || language.touched)}"
+          required>
             <option value="">Please select a language</option>
             <option *ngFor="let lang of langs"
               [value]="lang.id">
                 {{lang.name}}
             </option>
           </select>
+
+          <div class="invalid-feedback" *ngIf="language.errors && (language.dirty || language.touched)">
+            <span *ngIf="language.errors.required">Language is required</span>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary mt-2" >Submit</button>
+
+<!--         <pre>{{myForm.value | json}}</pre> -->
 
       </form>
 
